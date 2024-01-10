@@ -1,20 +1,25 @@
+require('dotenv').config(); // Add this line to use dotenv for environment variables
+const aws = require('aws-sdk');
 const multer = require('multer');
-const path = require('path');
+const multerS3 = require('multer-s3');
 
-// Set up storage options for multer
-const storage = multer.diskStorage({
-    // Destination is used to determine within which folder the uploaded files should be stored
-    destination: function(req, file, cb) {
-        cb(null, 'media/'); // Make sure this folder exists
-    },
-
-    // Filename is used to determine what the file should be named inside the folder
-    filename: function(req, file, cb) {
-        // Create a unique filename with the original extension
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
+aws.config.update({
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    region: 'eu-north-1' // Just use the region code here
 });
 
-const upload = multer({ storage: storage });
+const s3 = new aws.S3();
+
+const upload = multer({
+    storage: multerS3({
+        s3: s3,
+        bucket: 'smartlogbook-bucket',
+        ACL: 'public-read',
+        key: function (req, file, cb) {
+            cb(null, Date.now().toString() + '-' + file.originalname);
+        }
+    })
+});
 
 module.exports = upload;

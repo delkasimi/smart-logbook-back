@@ -99,7 +99,8 @@ const uploadMedia = async (req, res) => {
             return res.status(400).send('No file uploaded.');
         }
 
-        const fileUrl = `${req.protocol}://${req.get('host')}/media/${req.file.filename}`;
+        // When using multer-s3, the file location (URL) is provided in req.file.location
+        const fileUrl = req.file.location;
 
         res.json({ message: 'File uploaded successfully', fileUrl });
     } catch (err) {

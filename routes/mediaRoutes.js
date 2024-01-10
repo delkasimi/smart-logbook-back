@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../multerConfig'); // Adjust the path as necessary
+const upload = require('../multerConfig');
 const mediaController = require('../controllers/mediaController');
 
 const {
