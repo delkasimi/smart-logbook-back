@@ -1,0 +1,100 @@
+{
+  "info": {
+    "_postman_id": "action-api-collection",
+    "name": "Action API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Actions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/action",
+          "host": ["{{url}}"],
+          "path": ["action"]
+        }
+      }
+    },
+    {
+      "name": "Create Action",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"action_reference_id\": 1,\n    \"isOptional\": true,\n    \"sequence\": 1,\n    \"comment\": \"Example Comment\",\n    \"description\": \"Example Description\",\n    \"object_id\": [1, 2, 3],\n    \"response_type_id\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/action",
+          "host": ["{{url}}"],
+          "path": ["action"]
+        }
+      }
+    },
+    {
+      "name": "Get Action By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/action/1",
+          "host": ["{{url}}"],
+          "path": ["action", "1"]
+        }
+      }
+    },
+    {
+      "name": "Update Action",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"action_reference_id\": 2,\n    \"isOptional\": false,\n    \"sequence\": 2,\n    \"comment\": \"Updated Comment\",\n    \"description\": \"Updated Description\",\n    \"object_id\": [4, 5, 6],\n    \"response_type_id\": 2\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}/action/1",
+          "host": ["{{url}}"],
+          "path": ["action", "1"]
+        }
+      }
+    },
+    {
+      "name": "Delete Action",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/action/1",
+          "host": ["{{url}}"],
+          "path": ["action", "1"]
+        }
+      }
+    },
+    {
+      "name": "Get Actions by Object IDs",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{url}}/actionsByObjectIds",
+          "host": ["{{url}}"],
+          "path": ["actionsByObjectIds"]
+        }
+      }
+    }
+  ],
+  "protocolProfileBehavior": {}
+}

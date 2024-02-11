@@ -7,7 +7,6 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     dialect: 'postgres',
     port: process.env.DB_PORT,
-    logging: false,
     define: {
       timestamps: true, // Enable timestamps globally
       createdAt: 'created_at', 

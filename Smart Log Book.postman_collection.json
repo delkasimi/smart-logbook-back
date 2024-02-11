@@ -1,0 +1,2838 @@
+{
+	"info": {
+		"_postman_id": "b403e3e8-8ad8-4e8c-b114-412ec2b6c041",
+		"name": "Smart Log Book",
+		"description": "API Collection for Ticket and Checklist Operations",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4998584"
+	},
+	"item": [
+		{
+			"name": "Ticket Configs",
+			"item": [
+				{
+					"name": "Get All Ticket Configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ticket-config/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-config",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ticket Config",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"conf\": \n  {\n    \"columns\": [\n      {\"id\": \"id\", \"key\": \"id\", \"label\": \"ID\"},\n      {\"id\": \"fleet\", \"key\": \"fleet\", \"label\": \"Fleet\", \"inputType\": \"select\", \"options\": [\"Euro4000\", \"G1000\"]},\n      {\"id\": \"mainAsset\", \"key\": \"mainAsset\", \"label\": \"Main Asset\", \"inputType\": \"select\", \"options\": {\"Euro4000\": [4010, 4015, 4020], \"G1000\": [4010, 4015, 4020]}, \"dependancyColumn\": \"fleet\"},\n      {\"id\": \"date\", \"key\": \"date\", \"label\": \"Date\", \"inputType\": \"date\", \"options\": [\"dd/mm/yyyy\"]},\n      {\"id\": \"system\", \"key\": \"system\", \"label\": \"System\", \"inputType\": \"select\", \"options\": [\"10.Air\", \"20 Frein\", \"30. Moteur\", \"40. Electrique\", \"50. Securite\", \"60.Bougie\", \"70.Caisses\", \"80. Cabine\"]},\n      {\"id\": \"subSystem\", \"key\": \"subSystem\", \"label\": \"Sub-System\", \"inputType\": \"select\", \"options\": {\n        \"10.Air\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"],\n        \"20 Frein\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"],\n        \"30. Moteur\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"],\n        \"40. Electrique\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"],\n        \"50. Securite\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"],\n        \"60.Bougie\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"],\n        \"70.Caisses\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"],\n        \"80. Cabine\": [\"05. Equipement Basse Tension\", \"10. Systeme de Commande\", \"15. Contrôle Associé\", \"20. Machines Tournantes Auxiliaires\", \"25. Generation Auxiliaire / Batterie\", \"30. Diagnostic Embarque\", \"40. Pantographie\", \"45. Radio commande\", \"50. Manipulateur de Traction / Freinage\", \"55. Organes et Commande de couplabilite\", \"60. Fanal\", \"65. Anti patinage\"]\n      }, \"dependancyColumn\": \"system\"},\n      {\"id\": \"codeObjet\", \"key\": \"codeObjet\", \"label\": \"Code Objet\", \"inputType\": \"select\", \"options\": [\"BATTE\", \"CHARG\", \"GENEA\", \"PANDA\"]},\n      {\"id\": \"status\", \"key\": \"status\", \"label\": \"Status\", \"inputType\": \"select\", \"options\": [\"RECORDED\", \"SOLVED\", \"OPEN\", \"PLANNED\", \"PLANNED/SOLVED\", \"CLOSED 1ST LEVEL\", \"CLOSED\"]},\n      {\"id\": \"issueType\", \"key\": \"issueType\", \"label\": \"Issue Type\", \"inputType\": \"select\", \"options\": [\"MEASURE\", \"OBSERVATION\", \"COMMANDE\"]},\n      {\"id\": \"issue\", \"key\": \"issue\", \"label\": \"Issue\", \"inputType\": \"select\", \"options\": {\n        \"MEASURE\": [\"MSR01 - Alarme\", \"MSR02 - Parametre anormal\", \"MSR03 - Parametre instable\", \"MSR04 - Parametre trop eleve\", \"MSR05 - Parametre trop bas\", \"MSR06 - Parametre absent\"],\n        \"OBSERVATION\": [\"OBS01 - Vibration ou bruit\", \"OBS02 - Fuite\", \"OBS03 - Blocage\", \"OBS04 - Glissement\", \"OBS05 - Temperature\", \"OBS06 - Vitesse\", \"OBS07 - Non conforme\", \"OBS09 - Perte d'energie\", \"OBS10 - Deficience structurelle\"],\n        \"COMMANDE\": [\"CDE01 - Ne demarre pas\", \"CDE02 - Ne s'arrete pas\", \"CDE03 - Ne s'ouvre pas\", \"CDE04 - Ne se ferme pas\", \"CDE05 - Ne se connecte pas\", \"CDE06 - Ne se deconnecte pas\", \"CDE07 - Ne tourne pas\", \"CDE08 - S'arrete\"]\n      }, \"dependancyColumn\": \"issueType\"},\n      {\"id\": \"comment\", \"key\": \"comment\", \"label\": \"Comment\", \"inputType\": \"text\"},\n      {\"id\": \"media\", \"key\": \"media\", \"label\": \"Media\", \"inputType\": \"text\"}\n    ]\n  }\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ticket-config/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-config",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Ticket Config",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"conf\": { \"newKey\": \"newValue\" }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ticket-config/{{configId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-config",
+								"{{configId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ticket Config",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ticket-config/{{configId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-config",
+								"{{configId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tickets data",
+			"item": [
+				{
+					"name": "Get All Tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ticket-data/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-data",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ticket by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ticket-data/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-data",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Ticket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entry\": {\n    \"title\": \"Example Title\",\n    \"description\": \"Example Description\"\n  },\n  \"conf_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ticket-data/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-data",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Ticket",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entry\": {\n    \"title\": \"Updated Title\",\n    \"description\": \"Updated Description\"\n  },\n  \"conf_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ticket-data/{{ticketId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-data",
+								"{{ticketId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Ticket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ticket-data/{{ticketId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-data",
+								"{{ticketId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE01 - Ne demarre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS10 - Deficience structurelle\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE02 - Ne s'arrete pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS02 - Fuite\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS07 - Non conforme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS06 - Vitesse\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE02 - Ne s'arrete pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE03 - Ne s'ouvre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS04 - Glissement\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE03 - Ne s'ouvre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS07 - Non conforme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS10 - Deficience structurelle\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS02 - Fuite\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE05 - Ne se connecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE01 - Ne demarre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS06 - Vitesse\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS01 - Vibration ou bruit\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE01 - Ne demarre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE01 - Ne demarre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS04 - Glissement\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS03 - Blocage\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE05 - Ne se connecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE02 - Ne s'arrete pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS04 - Glissement\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS03 - Blocage\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE03 - Ne s'ouvre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR05 - Parametre trop bas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE01 - Ne demarre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS02 - Fuite\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS06 - Vitesse\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS03 - Blocage\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE03 - Ne s'ouvre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS01 - Vibration ou bruit\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE05 - Ne se connecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS01 - Vibration ou bruit\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS02 - Fuite\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS07 - Non conforme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS01 - Vibration ou bruit\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE01 - Ne demarre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS07 - Non conforme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS01 - Vibration ou bruit\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS10 - Deficience structurelle\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE03 - Ne s'ouvre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR05 - Parametre trop bas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS09 - Perte d'energie\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS02 - Fuite\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS02 - Fuite\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS03 - Blocage\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE05 - Ne se connecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE02 - Ne s'arrete pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE03 - Ne s'ouvre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR05 - Parametre trop bas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS06 - Vitesse\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS06 - Vitesse\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE05 - Ne se connecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS07 - Non conforme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE05 - Ne se connecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS05 - Temperature\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR05 - Parametre trop bas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE01 - Ne demarre pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR02 - Parametre anormal\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS10 - Deficience structurelle\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE04 - Ne se ferme pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS06 - Vitesse\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS01 - Vibration ou bruit\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS02 - Fuite\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE02 - Ne s'arrete pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"30. Diagnostic Embarque\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR05 - Parametre trop bas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"50. Securite\",\n        \"subSystem\": \"25. Generation Auxiliaire / Batterie\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS03 - Blocage\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS10 - Deficience structurelle\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"40. Pantographie\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS07 - Non conforme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED/SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"55. Organes et Commande de couplabilite\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS04 - Glissement\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED 1ST LEVEL\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"20 Frein\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE05 - Ne se connecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"80. Cabine\",\n        \"subSystem\": \"10. Systeme de Commande\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR06 - Parametre absent\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"RECORDED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"20. Machines Tournantes Auxiliaires\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE06 - Ne se deconnecte pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"PLANNED\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"50. Manipulateur de Traction / Freinage\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR01 - Alarme\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4015,\n        \"date\": \"01/01/2023\",\n        \"system\": \"40. Electrique\",\n        \"subSystem\": \"45. Radio commande\",\n        \"codeObjet\": \"BATTE\",\n        \"name\": \"batte\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR03 - Parametre instable\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"60.Bougie\",\n        \"subSystem\": \"15. Contr\\u00f4le Associ\\u00e9\",\n        \"codeObjet\": \"PANDA\",\n        \"name\": \"panda\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE07 - Ne tourne pas\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"OPEN\"\n    },\n    {\n        \"fleet\": \"Euro4000\",\n        \"mainAsset\": 4020,\n        \"date\": \"01/01/2023\",\n        \"system\": \"10.Air\",\n        \"subSystem\": \"05. Equipement Basse Tension\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"COMMANDE\",\n        \"issue\": \"CDE08 - S'arrete\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"SOLVED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"30. Moteur\",\n        \"subSystem\": \"60. Fanal\",\n        \"codeObjet\": \"GENEA\",\n        \"name\": \"genea\",\n        \"issueType\": \"MEASURE\",\n        \"issue\": \"MSR04 - Parametre trop eleve\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    },\n    {\n        \"fleet\": \"G1000\",\n        \"mainAsset\": 4010,\n        \"date\": \"01/01/2023\",\n        \"system\": \"70.Caisses\",\n        \"subSystem\": \"65. Anti patinage\",\n        \"codeObjet\": \"CHARG\",\n        \"name\": \"charg\",\n        \"issueType\": \"OBSERVATION\",\n        \"issue\": \"OBS04 - Glissement\",\n        \"comment\": \"Example Comment\",\n        \"media\": \"Example Media\",\n        \"status\": \"CLOSED\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ticket-data/bulk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-data",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checklist Configs",
+			"item": [
+				{
+					"name": "Get All Checklist Configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/checklist-config/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-config",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Checklist Config",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"conf\": {\n    \"headers\": [\n      {\n        \"Header\": \"Identification\",\n        \"columns\": [\n          { \"Header\": \"📅 Evenement\", \"accessor\": \"evenement\", \"type\": \"select\", \"options\": [\"PC/preparation courante\", \"VAR/visite arrivée\", \"En vehicle(traction)\"] },\n          { \"Header\": \"👷‍♂️ Personnel\", \"accessor\": \"personnel\" },\n          { \"Header\": \"🚆 Train\", \"accessor\": \"train\", \"type\": \"number\" }\n        ]\n      },\n      {\n        \"Header\": \"Relevage Compteurs\",\n        \"columns\": [\n          { \"Header\": \"📅 Date\", \"accessor\": \"date\", \"type\": \"date\" },\n          { \"Header\": \"🕒 Time\", \"accessor\": \"time\", \"type\": \"text\" },\n          { \"Header\": \"🛤️ KMs\", \"accessor\": \"kms\", \"type\": \"number\" },\n          { \"Header\": \"🕒 Hours\", \"accessor\": \"hours\", \"type\": \"number\" }\n        ]\n      },\n      {\n        \"Header\": \"Controle Niveau D'huile\",\n        \"columns\": [\n          { \"Header\": \"🛠️ Moteur\", \"accessor\": \"moteur\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] },\n          { \"Header\": \"🛠️ Hydrostatique\", \"accessor\": \"hydrostatique\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] },\n          { \"Header\": \"🛠️ Compresseur\", \"accessor\": \"compresseur\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] },\n          { \"Header\": \"🛠️ Boite\", \"accessor\": \"boite\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] }\n        ]\n      },\n      {\n        \"Header\": \"Controle Liquide de Refroidissement\",\n        \"columns\": [\n          { \"Header\": \"🛠️ Moteur\", \"accessor\": \"moteur_refroidissement\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] },\n          { \"Header\": \"🛠️ Convertisseur\", \"accessor\": \"convertisseur_refroidissement\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] }\n        ]\n      },\n      {\n        \"Header\": \"Controle Divers\",\n        \"columns\": [\n          { \"Header\": \"🛢️ Carburant\", \"accessor\": \"carburant\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] },\n          { \"Header\": \"🎛️  Sable\", \"accessor\": \"sable\", \"type\": \"select\", \"options\": [\"<MINI[\", \"<MINI-25[\", \"<25-50[\", \"<50-75[\", \"<75-MAXI[\", \">MAXI[\"] },\n          { \"Header\": \"Agres\", \"accessor\": \"agres\", \"type\": \"select\", \"options\": [\"Bon\", \"Mauvais\"] },\n          { \"Header\": \"Manque\", \"accessor\": \"manque\", \"type\": \"select\", \"options\": [\"MINI\", \"MINI-25\"] },\n          { \"Header\": \"Permie\", \"accessor\": \"perime\", \"type\": \"select\", \"options\": [\"MINI\", \"MINI-25\"] }\n        ]\n      }\n    ]\n  }\n  \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/checklist-config/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-config",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Checklist Config",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"conf\": { \"newKey\": \"newValue\" }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/checklist-config/{{configId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-config",
+								"{{configId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Checklist Config",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/checklist-config/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-config",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checklist Items",
+			"item": [
+				{
+					"name": "Get All Checklist Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/checklist-data/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-data",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Checklist Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/checklist-data/45",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-data",
+								"45"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Checklist Bulk",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"John Doe\",\n    \"train\": 12345,\n    \"date\": \"10/07/2023\",\n    \"time\": \"08:30\",\n    \"kms\": 150,\n    \"hours\": 2,\n    \"moteur\": \"<MINI[\",\n    \"hydrostatique\": \"<MINI[\",\n    \"compresseur\": \"<MINI[\",\n    \"boite\": \"<MINI[\",\n    \"moteur_refroidissement\": \"<MINI[\",\n    \"convertisseur_refroidissement\": \"<MINI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<MINI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Jane Smith\",\n    \"train\": 67890,\n    \"date\": \"10/07/2023\",\n    \"time\": \"10:45\",\n    \"kms\": 200,\n    \"hours\": 3,\n    \"moteur\": \"<MINI-25[\",\n    \"hydrostatique\": \"<MINI-25[\",\n    \"compresseur\": \"<MINI-25[\",\n    \"boite\": \"<MINI-25[\",\n    \"moteur_refroidissement\": \"<MINI-25[\",\n    \"convertisseur_refroidissement\": \"<MINI-25[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<MINI-25[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI-25\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Bob Johnson\",\n    \"train\": 98765,\n    \"date\": \"10/08/2023\",\n    \"time\": \"12:15\",\n    \"kms\": 300,\n    \"hours\": 4,\n    \"moteur\": \"<25-50[\",\n    \"hydrostatique\": \"<25-50[\",\n    \"compresseur\": \"<25-50[\",\n    \"boite\": \"<25-50[\",\n    \"moteur_refroidissement\": \"<25-50[\",\n    \"convertisseur_refroidissement\": \"<25-50[\",\n    \"carburant\": \"Empty\",\n    \"sable\": \"<25-50[\",\n    \"agres\": \"Mauvais\",\n    \"manque\": \"25-50\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"Alice Doe\",\n    \"train\": 54321,\n    \"date\": \"10/09/2023\",\n    \"time\": \"14:00\",\n    \"kms\": 180,\n    \"hours\": 2.5,\n    \"moteur\": \"<50-75[\",\n    \"hydrostatique\": \"<50-75[\",\n    \"compresseur\": \"<50-75[\",\n    \"boite\": \"<50-75[\",\n    \"moteur_refroidissement\": \"<50-75[\",\n    \"convertisseur_refroidissement\": \"<50-75[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<50-75[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"50-75\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Charlie Brown\",\n    \"train\": 24680,\n    \"date\": \"10/10/2023\",\n    \"time\": \"16:30\",\n    \"kms\": 250,\n    \"hours\": 3.5,\n    \"moteur\": \"<75-MAXI[\",\n    \"hydrostatique\": \"<75-MAXI[\",\n    \"compresseur\": \"<75-MAXI[\",\n    \"boite\": \"<75-MAXI[\",\n    \"moteur_refroidissement\": \"<75-MAXI[\",\n    \"convertisseur_refroidissement\": \"<75-MAXI[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<75-MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Eva Johnson\",\n    \"train\": 13579,\n    \"date\": \"10/11/2023\",\n    \"time\": \"18:45\",\n    \"kms\": 280,\n    \"hours\": 4.5,\n    \"moteur\": \">MAXI[\",\n    \"hydrostatique\": \">MAXI[\",\n    \"compresseur\": \">MAXI[\",\n    \"boite\": \">MAXI[\",\n    \"moteur_refroidissement\": \">MAXI[\",\n    \"convertisseur_refroidissement\": \">MAXI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \">MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"Yes\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"John Doe\",\n    \"train\": 12345,\n    \"date\": \"10/07/2023\",\n    \"time\": \"08:30\",\n    \"kms\": 150,\n    \"hours\": 2,\n    \"moteur\": \"<MINI[\",\n    \"hydrostatique\": \"<MINI[\",\n    \"compresseur\": \"<MINI[\",\n    \"boite\": \"<MINI[\",\n    \"moteur_refroidissement\": \"<MINI[\",\n    \"convertisseur_refroidissement\": \"<MINI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<MINI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Jane Smith\",\n    \"train\": 67890,\n    \"date\": \"10/07/2023\",\n    \"time\": \"10:45\",\n    \"kms\": 200,\n    \"hours\": 3,\n    \"moteur\": \"<MINI-25[\",\n    \"hydrostatique\": \"<MINI-25[\",\n    \"compresseur\": \"<MINI-25[\",\n    \"boite\": \"<MINI-25[\",\n    \"moteur_refroidissement\": \"<MINI-25[\",\n    \"convertisseur_refroidissement\": \"<MINI-25[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<MINI-25[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI-25\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Bob Johnson\",\n    \"train\": 98765,\n    \"date\": \"10/08/2023\",\n    \"time\": \"12:15\",\n    \"kms\": 300,\n    \"hours\": 4,\n    \"moteur\": \"<25-50[\",\n    \"hydrostatique\": \"<25-50[\",\n    \"compresseur\": \"<25-50[\",\n    \"boite\": \"<25-50[\",\n    \"moteur_refroidissement\": \"<25-50[\",\n    \"convertisseur_refroidissement\": \"<25-50[\",\n    \"carburant\": \"Empty\",\n    \"sable\": \"<25-50[\",\n    \"agres\": \"Mauvais\",\n    \"manque\": \"25-50\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"Alice Doe\",\n    \"train\": 54321,\n    \"date\": \"10/09/2023\",\n    \"time\": \"14:00\",\n    \"kms\": 180,\n    \"hours\": 2.5,\n    \"moteur\": \"<50-75[\",\n    \"hydrostatique\": \"<50-75[\",\n    \"compresseur\": \"<50-75[\",\n    \"boite\": \"<50-75[\",\n    \"moteur_refroidissement\": \"<50-75[\",\n    \"convertisseur_refroidissement\": \"<50-75[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<50-75[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"50-75\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Charlie Brown\",\n    \"train\": 24680,\n    \"date\": \"10/10/2023\",\n    \"time\": \"16:30\",\n    \"kms\": 250,\n    \"hours\": 3.5,\n    \"moteur\": \"<75-MAXI[\",\n    \"hydrostatique\": \"<75-MAXI[\",\n    \"compresseur\": \"<75-MAXI[\",\n    \"boite\": \"<75-MAXI[\",\n    \"moteur_refroidissement\": \"<75-MAXI[\",\n    \"convertisseur_refroidissement\": \"<75-MAXI[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<75-MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Eva Johnson\",\n    \"train\": 13579,\n    \"date\": \"10/11/2023\",\n    \"time\": \"18:45\",\n    \"kms\": 280,\n    \"hours\": 4.5,\n    \"moteur\": \">MAXI[\",\n    \"hydrostatique\": \">MAXI[\",\n    \"compresseur\": \">MAXI[\",\n    \"boite\": \">MAXI[\",\n    \"moteur_refroidissement\": \">MAXI[\",\n    \"convertisseur_refroidissement\": \">MAXI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \">MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"Yes\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"John Doe\",\n    \"train\": 12345,\n    \"date\": \"10/07/2023\",\n    \"time\": \"08:30\",\n    \"kms\": 150,\n    \"hours\": 2,\n    \"moteur\": \"<MINI[\",\n    \"hydrostatique\": \"<MINI[\",\n    \"compresseur\": \"<MINI[\",\n    \"boite\": \"<MINI[\",\n    \"moteur_refroidissement\": \"<MINI[\",\n    \"convertisseur_refroidissement\": \"<MINI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<MINI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Jane Smith\",\n    \"train\": 67890,\n    \"date\": \"10/07/2023\",\n    \"time\": \"10:45\",\n    \"kms\": 200,\n    \"hours\": 3,\n    \"moteur\": \"<MINI-25[\",\n    \"hydrostatique\": \"<MINI-25[\",\n    \"compresseur\": \"<MINI-25[\",\n    \"boite\": \"<MINI-25[\",\n    \"moteur_refroidissement\": \"<MINI-25[\",\n    \"convertisseur_refroidissement\": \"<MINI-25[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<MINI-25[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI-25\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Bob Johnson\",\n    \"train\": 98765,\n    \"date\": \"10/08/2023\",\n    \"time\": \"12:15\",\n    \"kms\": 300,\n    \"hours\": 4,\n    \"moteur\": \"<25-50[\",\n    \"hydrostatique\": \"<25-50[\",\n    \"compresseur\": \"<25-50[\",\n    \"boite\": \"<25-50[\",\n    \"moteur_refroidissement\": \"<25-50[\",\n    \"convertisseur_refroidissement\": \"<25-50[\",\n    \"carburant\": \"Empty\",\n    \"sable\": \"<25-50[\",\n    \"agres\": \"Mauvais\",\n    \"manque\": \"25-50\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"Alice Doe\",\n    \"train\": 54321,\n    \"date\": \"10/09/2023\",\n    \"time\": \"14:00\",\n    \"kms\": 180,\n    \"hours\": 2.5,\n    \"moteur\": \"<50-75[\",\n    \"hydrostatique\": \"<50-75[\",\n    \"compresseur\": \"<50-75[\",\n    \"boite\": \"<50-75[\",\n    \"moteur_refroidissement\": \"<50-75[\",\n    \"convertisseur_refroidissement\": \"<50-75[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<50-75[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"50-75\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Charlie Brown\",\n    \"train\": 24680,\n    \"date\": \"10/10/2023\",\n    \"time\": \"16:30\",\n    \"kms\": 250,\n    \"hours\": 3.5,\n    \"moteur\": \"<75-MAXI[\",\n    \"hydrostatique\": \"<75-MAXI[\",\n    \"compresseur\": \"<75-MAXI[\",\n    \"boite\": \"<75-MAXI[\",\n    \"moteur_refroidissement\": \"<75-MAXI[\",\n    \"convertisseur_refroidissement\": \"<75-MAXI[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<75-MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Eva Johnson\",\n    \"train\": 13579,\n    \"date\": \"10/11/2023\",\n    \"time\": \"18:45\",\n    \"kms\": 280,\n    \"hours\": 4.5,\n    \"moteur\": \">MAXI[\",\n    \"hydrostatique\": \">MAXI[\",\n    \"compresseur\": \">MAXI[\",\n    \"boite\": \">MAXI[\",\n    \"moteur_refroidissement\": \">MAXI[\",\n    \"convertisseur_refroidissement\": \">MAXI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \">MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"Yes\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"John Doe\",\n    \"train\": 12345,\n    \"date\": \"10/07/2023\",\n    \"time\": \"08:30\",\n    \"kms\": 150,\n    \"hours\": 2,\n    \"moteur\": \"<MINI[\",\n    \"hydrostatique\": \"<MINI[\",\n    \"compresseur\": \"<MINI[\",\n    \"boite\": \"<MINI[\",\n    \"moteur_refroidissement\": \"<MINI[\",\n    \"convertisseur_refroidissement\": \"<MINI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<MINI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Jane Smith\",\n    \"train\": 67890,\n    \"date\": \"10/07/2023\",\n    \"time\": \"10:45\",\n    \"kms\": 200,\n    \"hours\": 3,\n    \"moteur\": \"<MINI-25[\",\n    \"hydrostatique\": \"<MINI-25[\",\n    \"compresseur\": \"<MINI-25[\",\n    \"boite\": \"<MINI-25[\",\n    \"moteur_refroidissement\": \"<MINI-25[\",\n    \"convertisseur_refroidissement\": \"<MINI-25[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<MINI-25[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI-25\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Bob Johnson\",\n    \"train\": 98765,\n    \"date\": \"10/08/2023\",\n    \"time\": \"12:15\",\n    \"kms\": 300,\n    \"hours\": 4,\n    \"moteur\": \"<25-50[\",\n    \"hydrostatique\": \"<25-50[\",\n    \"compresseur\": \"<25-50[\",\n    \"boite\": \"<25-50[\",\n    \"moteur_refroidissement\": \"<25-50[\",\n    \"convertisseur_refroidissement\": \"<25-50[\",\n    \"carburant\": \"Empty\",\n    \"sable\": \"<25-50[\",\n    \"agres\": \"Mauvais\",\n    \"manque\": \"25-50\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"Alice Doe\",\n    \"train\": 54321,\n    \"date\": \"10/09/2023\",\n    \"time\": \"14:00\",\n    \"kms\": 180,\n    \"hours\": 2.5,\n    \"moteur\": \"<50-75[\",\n    \"hydrostatique\": \"<50-75[\",\n    \"compresseur\": \"<50-75[\",\n    \"boite\": \"<50-75[\",\n    \"moteur_refroidissement\": \"<50-75[\",\n    \"convertisseur_refroidissement\": \"<50-75[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<50-75[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"50-75\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Charlie Brown\",\n    \"train\": 24680,\n    \"date\": \"10/10/2023\",\n    \"time\": \"16:30\",\n    \"kms\": 250,\n    \"hours\": 3.5,\n    \"moteur\": \"<75-MAXI[\",\n    \"hydrostatique\": \"<75-MAXI[\",\n    \"compresseur\": \"<75-MAXI[\",\n    \"boite\": \"<75-MAXI[\",\n    \"moteur_refroidissement\": \"<75-MAXI[\",\n    \"convertisseur_refroidissement\": \"<75-MAXI[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<75-MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Eva Johnson\",\n    \"train\": 13579,\n    \"date\": \"10/11/2023\",\n    \"time\": \"18:45\",\n    \"kms\": 280,\n    \"hours\": 4.5,\n    \"moteur\": \">MAXI[\",\n    \"hydrostatique\": \">MAXI[\",\n    \"compresseur\": \">MAXI[\",\n    \"boite\": \">MAXI[\",\n    \"moteur_refroidissement\": \">MAXI[\",\n    \"convertisseur_refroidissement\": \">MAXI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \">MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"Yes\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"John Doe\",\n    \"train\": 12345,\n    \"date\": \"10/07/2023\",\n    \"time\": \"08:30\",\n    \"kms\": 150,\n    \"hours\": 2,\n    \"moteur\": \"<MINI[\",\n    \"hydrostatique\": \"<MINI[\",\n    \"compresseur\": \"<MINI[\",\n    \"boite\": \"<MINI[\",\n    \"moteur_refroidissement\": \"<MINI[\",\n    \"convertisseur_refroidissement\": \"<MINI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<MINI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Jane Smith\",\n    \"train\": 67890,\n    \"date\": \"10/07/2023\",\n    \"time\": \"10:45\",\n    \"kms\": 200,\n    \"hours\": 3,\n    \"moteur\": \"<MINI-25[\",\n    \"hydrostatique\": \"<MINI-25[\",\n    \"compresseur\": \"<MINI-25[\",\n    \"boite\": \"<MINI-25[\",\n    \"moteur_refroidissement\": \"<MINI-25[\",\n    \"convertisseur_refroidissement\": \"<MINI-25[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<MINI-25[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI-25\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Bob Johnson\",\n    \"train\": 98765,\n    \"date\": \"10/08/2023\",\n    \"time\": \"12:15\",\n    \"kms\": 300,\n    \"hours\": 4,\n    \"moteur\": \"<25-50[\",\n    \"hydrostatique\": \"<25-50[\",\n    \"compresseur\": \"<25-50[\",\n    \"boite\": \"<25-50[\",\n    \"moteur_refroidissement\": \"<25-50[\",\n    \"convertisseur_refroidissement\": \"<25-50[\",\n    \"carburant\": \"Empty\",\n    \"sable\": \"<25-50[\",\n    \"agres\": \"Mauvais\",\n    \"manque\": \"25-50\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"Alice Doe\",\n    \"train\": 54321,\n    \"date\": \"10/09/2023\",\n    \"time\": \"14:00\",\n    \"kms\": 180,\n    \"hours\": 2.5,\n    \"moteur\": \"<50-75[\",\n    \"hydrostatique\": \"<50-75[\",\n    \"compresseur\": \"<50-75[\",\n    \"boite\": \"<50-75[\",\n    \"moteur_refroidissement\": \"<50-75[\",\n    \"convertisseur_refroidissement\": \"<50-75[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<50-75[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"50-75\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Charlie Brown\",\n    \"train\": 24680,\n    \"date\": \"10/10/2023\",\n    \"time\": \"16:30\",\n    \"kms\": 250,\n    \"hours\": 3.5,\n    \"moteur\": \"<75-MAXI[\",\n    \"hydrostatique\": \"<75-MAXI[\",\n    \"compresseur\": \"<75-MAXI[\",\n    \"boite\": \"<75-MAXI[\",\n    \"moteur_refroidissement\": \"<75-MAXI[\",\n    \"convertisseur_refroidissement\": \"<75-MAXI[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<75-MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Eva Johnson\",\n    \"train\": 13579,\n    \"date\": \"10/11/2023\",\n    \"time\": \"18:45\",\n    \"kms\": 280,\n    \"hours\": 4.5,\n    \"moteur\": \">MAXI[\",\n    \"hydrostatique\": \">MAXI[\",\n    \"compresseur\": \">MAXI[\",\n    \"boite\": \">MAXI[\",\n    \"moteur_refroidissement\": \">MAXI[\",\n    \"convertisseur_refroidissement\": \">MAXI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \">MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"Yes\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"John Doe\",\n    \"train\": 12345,\n    \"date\": \"10/07/2023\",\n    \"time\": \"08:30\",\n    \"kms\": 150,\n    \"hours\": 2,\n    \"moteur\": \"<MINI[\",\n    \"hydrostatique\": \"<MINI[\",\n    \"compresseur\": \"<MINI[\",\n    \"boite\": \"<MINI[\",\n    \"moteur_refroidissement\": \"<MINI[\",\n    \"convertisseur_refroidissement\": \"<MINI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<MINI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Jane Smith\",\n    \"train\": 67890,\n    \"date\": \"10/07/2023\",\n    \"time\": \"10:45\",\n    \"kms\": 200,\n    \"hours\": 3,\n    \"moteur\": \"<MINI-25[\",\n    \"hydrostatique\": \"<MINI-25[\",\n    \"compresseur\": \"<MINI-25[\",\n    \"boite\": \"<MINI-25[\",\n    \"moteur_refroidissement\": \"<MINI-25[\",\n    \"convertisseur_refroidissement\": \"<MINI-25[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<MINI-25[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI-25\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Bob Johnson\",\n    \"train\": 98765,\n    \"date\": \"10/08/2023\",\n    \"time\": \"12:15\",\n    \"kms\": 300,\n    \"hours\": 4,\n    \"moteur\": \"<25-50[\",\n    \"hydrostatique\": \"<25-50[\",\n    \"compresseur\": \"<25-50[\",\n    \"boite\": \"<25-50[\",\n    \"moteur_refroidissement\": \"<25-50[\",\n    \"convertisseur_refroidissement\": \"<25-50[\",\n    \"carburant\": \"Empty\",\n    \"sable\": \"<25-50[\",\n    \"agres\": \"Mauvais\",\n    \"manque\": \"25-50\",\n    \"perime\": \"T\"\n  },\n  {\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"Alice Doe\",\n    \"train\": 54321,\n    \"date\": \"10/09/2023\",\n    \"time\": \"14:00\",\n    \"kms\": 180,\n    \"hours\": 2.5,\n    \"moteur\": \"<50-75[\",\n    \"hydrostatique\": \"<50-75[\",\n    \"compresseur\": \"<50-75[\",\n    \"boite\": \"<50-75[\",\n    \"moteur_refroidissement\": \"<50-75[\",\n    \"convertisseur_refroidissement\": \"<50-75[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<50-75[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"50-75\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"VAR/visite arrivée\",\n    \"personnel\": \"Charlie Brown\",\n    \"train\": 24680,\n    \"date\": \"10/10/2023\",\n    \"time\": \"16:30\",\n    \"kms\": 250,\n    \"hours\": 3.5,\n    \"moteur\": \"<75-MAXI[\",\n    \"hydrostatique\": \"<75-MAXI[\",\n    \"compresseur\": \"<75-MAXI[\",\n    \"boite\": \"<75-MAXI[\",\n    \"moteur_refroidissement\": \"<75-MAXI[\",\n    \"convertisseur_refroidissement\": \"<75-MAXI[\",\n    \"carburant\": \"Half\",\n    \"sable\": \"<75-MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"No\"\n  },\n  {\n    \"evenement\": \"En vehicle(traction)\",\n    \"personnel\": \"Eva Johnson\",\n    \"train\": 13579,\n    \"date\": \"10/11/2023\",\n    \"time\": \"18:45\",\n    \"kms\": 280,\n    \"hours\": 4.5,\n    \"moteur\": \">MAXI[\",\n    \"hydrostatique\": \">MAXI[\",\n    \"compresseur\": \">MAXI[\",\n    \"boite\": \">MAXI[\",\n    \"moteur_refroidissement\": \">MAXI[\",\n    \"convertisseur_refroidissement\": \">MAXI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \">MAXI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"75-MAXI\",\n    \"perime\": \"Yes\"\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/checklist-data/bulk",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-data",
+								"bulk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Checklist Item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"entry\": {\n    \"content\": \"Updated Item\",\n    \"status\": \"completed\"\n  },\n  \"conf_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/checklist-data/{{itemId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-data",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Checklist Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/checklist-data/{{itemId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-data",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Checklist item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"evenement\": \"PC/preparation courante\",\n    \"personnel\": \"John Doe\",\n    \"train\": 12345,\n    \"date\": \"10/07/2023\",\n    \"time\": \"08:30\",\n    \"kms\": 150,\n    \"hours\": 2,\n    \"moteur\": \"<MINI[\",\n    \"hydrostatique\": \"<MINI[\",\n    \"compresseur\": \"<MINI[\",\n    \"boite\": \"<MINI[\",\n    \"moteur_refroidissement\": \"<MINI[\",\n    \"convertisseur_refroidissement\": \"<MINI[\",\n    \"carburant\": \"Full\",\n    \"sable\": \"<MINI[\",\n    \"agres\": \"Bon\",\n    \"manque\": \"MINI\",\n    \"perime\": \"T\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/checklist-data/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"checklist-data",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Solution Configs",
+			"item": [
+				{
+					"name": "Get All Solution Configs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/solution-config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Solution Config by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/solution-config/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-config",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Solution Config",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"conf\": { \"key\": \"value\", \"otherKey\": \"otherValue\" }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/solution-config",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-config"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Solution Config",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"conf\": { \"updatedKey\": \"updatedValue\" }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/solution-config/{{configId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-config",
+								"{{configId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Solution Config",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/solution-config/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-config",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Solutions-data",
+			"item": [
+				{
+					"name": "Get All Solutions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://smart-logbook-back.onrender.com/solution-data",
+							"protocol": "https",
+							"host": [
+								"smart-logbook-back",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"solution-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Solution By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/solution-data/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-data",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Solution",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"config_id\": 1,\n    \"data\": {  \"codeObjet\": \"BATTE\", \"issue\": \"OBS07 - Non conforme\", \"date\": \"2024-01-10\",\"nameInstructions\": \"some solution instructions \",\"comment\": \"some solution comment \"},\n    \"ticket_Id\":3817\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/solution-data",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Solution",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"config_id\": 1,\n    \"data\": { \"updatedKey\": \"updatedValue\" }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/solution-data/{{solutionId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-data",
+								"{{solutionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Solution",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/solution-data/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-data",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter solutions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"RECORDED\",\n    \"fleet\": \"G1000\",\n    \"mainAsset\": \"4015\",\n    \"date\": \"2023-12-20\",\n    \"system\": \"30. Moteur\",\n    \"subSystem\": \"30. Diagnostic Embarque\",\n    \"codeObjet\": \"CHARG\",\n    \"issueType\": \"OBSERVATION\",\n    \"issue\": \"OBS03 - Blocage\",\n    \"comment\": \"Example Comment\",\n    \"media\": \"Example Media\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/solution-data/filter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-data",
+								"filter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "view",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/solution-data/1/view",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-data",
+								"1",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newRating\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://smart-logbook-back.onrender.com/solution-data/1/rate",
+							"protocol": "https",
+							"host": [
+								"smart-logbook-back",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"solution-data",
+								"1",
+								"rate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rating",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/solution-data/1/ratings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"solution-data",
+								"1",
+								"ratings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "Get All Media",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Media by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/media/solution/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"media",
+								"solution",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Media",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"associated_id\": 1,\n    \"associated_type\": \"solution\",\n    \"media_url\": \"http://example.com/media.jpg\",\n    \"media_type\": \"pdf\",\n    \"comment\": \"Sample media comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/media",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Media",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"associated_id\": 2,\n    \"associated_type\": \"ticket\",\n    \"media_url\": \"http://example.com/updated_media.jpg\",\n    \"media_type\": \"image/jpeg\",\n    \"comment\": \"Updated media comment\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/media/{{mediaId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"media",
+								"{{mediaId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Media",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/media/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"media",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/delkasimi/Downloads/DALL·E 1 - A photorealistic image of an engineer in a hard hat and reflective safety vest, examining and checking wires on a large train engine, with a focused a.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/media/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"media",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ticket-solution",
+			"item": [
+				{
+					"name": "get relation by ticket id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/ticket-solution/solution/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-solution",
+								"solution",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create relation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"ticket_id\": 3206,\n        \"solution_id\": 11\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/ticket-solution/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"ticket-solution",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Assets",
+			"item": [
+				{
+					"name": "Get All Asset Models",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/asset/models",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Asset Model",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"model_name\": \"Train Model X\",\n  \"description\": \"A model of trains used for testing purposes.\",\n  \"attributes\": {\n    \"speed\": \"100 km/h\",\n    \"capacity\": \"200 passengers\"\n  }\n}\n"
+						},
+						"url": {
+							"raw": "localhost:3000/asset/models",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"models"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Asset Model by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/asset/models/{{modelId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"models",
+								"{{modelId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Asset Model",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"modelName\": \"Updated Model\"}"
+						},
+						"url": {
+							"raw": "localhost:3000/asset/models/{{modelId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"models",
+								"{{modelId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Asset Model",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/asset/models/{{modelId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"models",
+								"{{modelId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Asset Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/asset/items",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Asset Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"itemName\": \"New Item\"}"
+						},
+						"url": {
+							"raw": "localhost:3000/asset/items",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Asset Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/asset/items/{{itemId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"items",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Asset Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"itemName\": \"Updated Item\"}"
+						},
+						"url": {
+							"raw": "localhost:3000/asset/items/{{itemId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"items",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Asset Item",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/asset/items/{{itemId}}",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"asset",
+								"items",
+								"{{itemId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Objects",
+			"item": [
+				{
+					"name": "Get All Objects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/objects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"objects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Object",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"object_name\": \"Sample Object\", \"description\": \"This is a sample object\", \"attributes\": {\"attribute1\": \"Value1\", \"attribute2\": \"Value2\"}}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/objects",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"objects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Object by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/objects/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"objects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Object",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"object_name\": \"Updated Object Name\", \"description\": \"Updated description\", \"attributes\": {\"attribute1\": \"Updated Value1\"}}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/objects/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"objects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Object",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/objects/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"objects",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Procedures",
+			"item": [
+				{
+					"name": "Get All Procedure Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/proceduretype",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proceduretype"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Procedure Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Checklist\",\"description\":\"Checklist for machinery\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/proceduretype",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proceduretype"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Procedure Type by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/proceduretype/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proceduretype",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Procedure Type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"typeName\":\"Checklist Updated\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/proceduretype/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proceduretype",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Procedure Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/proceduretype/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"proceduretype",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Procedures",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/procedure",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Procedure",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Example Procedure\",\n  \"description\": \"This is an example procedure.\",\n  \"procedure_type_id\": 1,\n  \"version\": 1,\n  \"status\": \"Active\",\n  \"event_id\": 1,\n  \"from\": \"2024-01-26T20:22:57.104Z\",\n  \"to\": \"2025-01-26T20:22:57.104Z\",\n  \"asset_model_id\": 1,\n  \"asset_item_id\": 1,\n  \"attributes\": {\n    \"key1\": \"value1\",\n    \"key2\": \"value2\",\n    \"key3\": \"value3\"\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/procedure",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Procedure by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/procedure/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Procedure",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"procedureName\":\"Procedure 1 Updated\"}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/procedure/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Procedure",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/procedure/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Procedures by Procedure Type",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/procedure/type/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure",
+								"type",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Procedure by Asset Model",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/procedure/model/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure",
+								"model",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Procedures By Asset Item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/procedure/item/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"procedure",
+								"item",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "events",
+			"item": [
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"type\":\"EventType\",\"event\":\"EventName\",\"description\":\"Event Description\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/event",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"type\":\"UpdatedEventType\",\"event\":\"UpdatedEventName\",\"description\":\"Updated Event Description\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/event/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/event/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"event",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Phases",
+			"item": [
+				{
+					"name": "Get All Phases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Phase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"procedure_id\":3,\"phase_name\":\"Phase 1\",\"sequence\":\"1\", \"status\":\"Active\",\"attributes\":{\"attribute1\":\"value1\",\"attribute2\":\"value2\"}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/phase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phase"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Phase by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phase/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phase",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Phase",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"phaseName\":\"Phase 1 Updated\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/phase/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phase",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Phase",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phases/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phases",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Phases by Procedure ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/phase/procedure/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"phase",
+								"procedure",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operation Types",
+			"item": [
+				{
+					"name": "Get All Operation Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operation-types",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operation-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Operation Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example Operation Type\",\n    \"description\": \"Description of Example Operation Type\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/operation-types",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operation-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Operation Type By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operation-types/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operation-types",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Operation Type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Operation Type\",\n    \"description\": \"Updated Description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/operation-types/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operation-types",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Operation Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operation-types/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operation-types",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Localizations",
+			"item": [
+				{
+					"name": "Get All Localizations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/localizations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"localizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Localization",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example Localization\",\n    \"description\": \"Description of Example Localization\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/localizations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"localizations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Localization By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/localizations/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"localizations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Localization",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Localization\",\n    \"description\": \"Updated Description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/localizations/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"localizations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Localization",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/localizations/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"localizations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ResponseType",
+			"item": [
+				{
+					"name": "Get All Response Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/responseType",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"responseType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Response Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"Example Response Type\",\n    \"description\": \"Description of Example Response Type\",\n    \"options\": {\"option1\": \"Value1\", \"option2\": \"Value2\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/responseType",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"responseType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Response Type By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/responseType/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"responseType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Response Type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"Updated Response Type\",\n    \"description\": \"Updated Description\",\n    \"options\": {\"option3\": \"Value3\", \"option4\": \"Value4\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/responseType/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"responseType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Response Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/responseType/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"responseType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operations",
+			"item": [
+				{
+					"name": "Get All Operations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Operation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"procedureId\": 1, \n    \"phaseId\": 1, \n    \"operationTypeId\": 1, \n    \"responseTypeId\": 1, \n    \"isResponseRequired\": true, \n    \"localizationId\": 1, \n    \"name\": \"Operation Name\", \n    \"description\": \"Operation Description\", \n    \"sequence\": 1, \n    \"status\": \"active\", \n    \"from\": \"2024-01-01\", \n    \"to\": \"2024-12-31\", \n    \"flag\": \"important\", \n    \"comments\": \"No comments\", \n    \"references\": {}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/operations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Operation By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operations/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Operation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Operation Name\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/operations/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Operation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operations/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Operations By Procedure ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operations/procedure/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operations",
+								"procedure",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Operations By Phase ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/operations/phase/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"operations",
+								"phase",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Action Type",
+			"item": [
+				{
+					"name": "Get All Action Types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actionType",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Action Type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example Action Type\",\n    \"description\": \"Description of Example Action Type\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/actionType",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Action Type By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actionType/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Action Type",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Action Type\",\n    \"description\": \"Updated Description\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/actionType/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Action Type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actionType/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionType",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Actions References",
+			"item": [
+				{
+					"name": "Get All Action References",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actionReferences",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionReferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Action Reference",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type_id\": 1,\n    \"description\": \"Example Action\",\n    \"object_id\": [1, 2, 3],\n    \"response_type_id\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/actionReferences",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionReferences"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Action Reference By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actionReferences/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionReferences",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Action Reference",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type_id\": 2,\n    \"description\": \"Updated Action\",\n    \"object_id\": [4, 5, 6],\n    \"response_type_id\": 2\n}"
+						},
+						"url": {
+							"raw": "{{url}}/actionReferences/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionReferences",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Action Reference",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actionReferences/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionReferences",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Actions by Object IDs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[1,3]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/actionReferences/actionsByObjectIds",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionReferences",
+								"actionsByObjectIds"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Action",
+			"item": [
+				{
+					"name": "Get All Actions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/action",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"action"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Action",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action_reference_id\": 1,\n    \"isoptional\": true,\n    \"sequence\": 1,\n    \"comment\": \"Example Comment\",\n    \"description\": \"Example Description\",\n    \"object_id\": [1, 2, 3],\n    \"response_type_id\": 9,\n    \"operation_id\":6\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/action",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"action"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Action By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/action/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"action",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Action",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action_reference_id\": 2,\n    \"isOptional\": false,\n    \"sequence\": 2,\n    \"comment\": \"Updated Comment\",\n    \"description\": \"Updated Description\",\n    \"object_id\": [4, 5, 6],\n    \"response_type_id\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/action/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"action",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Action",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/action/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"action",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Actions by Object IDs",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/actionsByObjectIds",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"actionsByObjectIds"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

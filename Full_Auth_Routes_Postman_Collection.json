@@ -1,0 +1,648 @@
+{
+    "info": {
+        "name": "Full Auth Routes Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Create User",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/users",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "users"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"username\": \"newuser\", \"password\": \"password123\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get All Users",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/users",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "users"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update User",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/users/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "users",
+                        "1"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"username\": \"updateduser\", \"password\": \"newpassword\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Delete User",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/users/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "users",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get User by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/users/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "users",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Change User Password",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/users/1/password",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "users",
+                        "1",
+                        "password"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"newPassword\": \"newpassword123\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },      
+        {
+            "name": "Create Role",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/roles",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "roles"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\": \"newrole\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get All Roles",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/roles",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "roles"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update Role",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/roles/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "roles",
+                        "1"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\": \"updatedrole\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Delete Role",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/roles/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "roles",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create Permission",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/permissions",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "permissions"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\": \"newpermission\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get All Permissions",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/permissions",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "permissions"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update Permission",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/permissions/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "permissions",
+                        "1"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"name\": \"updatedpermission\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Delete Permission",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/permissions/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "permissions",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create RolePermission",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/rolepermissions",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "rolepermissions"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"roleId\": 1, \"permissionId\": 1}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get All RolePermissions",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/rolepermissions",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "rolepermissions"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update RolePermission",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/rolepermissions/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "rolepermissions",
+                        "1"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"roleId\": 2, \"permissionId\": 2}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get Permissions by Role ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/rolepermissions/role/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "rolepermissions",
+                        "role",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Role Permission by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/rolepermissions/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "rolepermissions",
+                        "1"
+                    ]
+                }
+            }
+        },           
+        {
+            "name": "Delete RolePermission",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/rolepermissions/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "rolepermissions",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Create UserRole",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/userroles",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "userroles"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"userId\": 1, \"roleId\": 1}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get All UserRoles",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/userroles",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "userroles"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Update UserRole",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/userroles/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "userroles",
+                        "1"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"userId\": 2, \"roleId\": 2}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Delete UserRole",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/userroles/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "userroles",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get User Role by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/userroles/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "userroles",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Users by Role ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/userroles/role/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "userroles",
+                        "role",
+                        "1"
+                    ]
+                }
+            }
+        }, 
+        {
+            "name": "Get Roles by User ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/userroles/user/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "userroles",
+                        "user",
+                        "1"
+                    ]
+                }
+            }
+        },                   
+        {
+            "name": "Create AuditLog",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/auditlogs",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "auditlogs"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"userId\": 1, \"action\": \"test action\", \"details\": \"test details\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Get All AuditLogs",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/auditlogs",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "auditlogs"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get AuditLog by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{url}}/auth/auditlogs/1",
+                    "host": [
+                        "{{url}}"
+                    ],
+                    "path": [
+                        "auth",
+                        "auditlogs",
+                        "1"
+                    ]
+                }
+            }
+        }
+    ]
+}
