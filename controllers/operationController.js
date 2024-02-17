@@ -12,9 +12,11 @@ const operationController = {
 
   createOperation: async (req, res) => {
     try {
+      console.log("req.body:", req.body);
       const operation = await Operation.create(req.body);
       res.status(201).json(operation);
     } catch (error) {
+      console.log("error.message:", error.message);
       res.status(400).json({ error: error.message });
     }
   },

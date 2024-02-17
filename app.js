@@ -11,8 +11,19 @@ sequelize
   .catch((err) => console.error("Unable to connect to the database:", err));
 
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const path = require("path");
+
+// Increase the limit here
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(
+  bodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
 
 app.use(cors());
 
@@ -44,6 +55,8 @@ const actionReferenceRoutes = require("./routes/actionReferenceRoutes");
 const actionRoutes = require("./routes/actionRoutes");
 const authRoutes = require("./routes/authRoutes");
 const actRoutes = require("./routes/actRoutes");
+const issueRoutes = require("./routes/issueRouter");
+const issueTypeRoutes = require("./routes/issueTypeRouter");
 
 app.use(express.json());
 
@@ -72,6 +85,8 @@ app.use("/actionReferences/", actionReferenceRoutes);
 app.use("/action/", actionRoutes);
 app.use("/auth/", authRoutes);
 app.use("/act/", actRoutes);
+app.use("/issues/", issueRoutes);
+app.use("/issue-types/", issueTypeRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

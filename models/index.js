@@ -19,6 +19,9 @@ const Localization = require("./Localization");
 const Media = require("./Media");
 const Object = require("./Object");
 const Act = require("./Act");
+const Issue = require("./Issue");
+const IssueType = require("./IssueType");
+const ActionReferenceIssues = require("./ActionReferenceIssues");
 
 // Associations
 Procedure.belongsTo(ProcedureType, { foreignKey: "procedure_type_id" });
@@ -56,6 +59,18 @@ Localization.hasMany(Operation, {
   as: "Operations",
 });
 Operation.belongsTo(Localization, { foreignKey: "localization_id" });
+
+Localization.hasMany(Action, {
+  foreignKey: "localization_id",
+  as: "Actions",
+});
+Action.belongsTo(Localization, { foreignKey: "localization_id" });
+
+Localization.hasMany(ActionReference, {
+  foreignKey: "localization_id",
+  as: "ActionReferences",
+});
+ActionReference.belongsTo(Localization, { foreignKey: "localization_id" });
 
 Media.hasMany(Localization, {
   foreignKey: "media_id",
@@ -102,6 +117,18 @@ ActionReference.belongsTo(ResponseType, {
   as: "ResponseType",
 });
 
+IssueType.hasMany(Issue, { foreignKey: "issue_type_id", as: "issues" });
+Issue.belongsTo(IssueType, { foreignKey: "issue_type_id", as: "issueType" });
+
+ActionReference.belongsToMany(Issue, {
+  through: ActionReferenceIssues,
+  foreignKey: "action_reference_id",
+});
+Issue.belongsToMany(ActionReference, {
+  through: ActionReferenceIssues,
+  foreignKey: "issue_id",
+});
+
 module.exports = {
   sequelize,
   Sequelize,
@@ -120,5 +147,8 @@ module.exports = {
   Action,
   Object,
   Media,
-  // Add other models as needed
+  Act,
+  ActionReferenceIssues,
+  Issue,
+  IssueType,
 };

@@ -21,6 +21,7 @@ const ActionReference = sequelize.define(
     },
     object_id: {
       type: DataTypes.JSONB,
+      defaultValue: [],
     },
     response_type_id: {
       type: DataTypes.INTEGER,
@@ -34,6 +35,14 @@ const ActionReference = sequelize.define(
       references: {
         model: "act",
         key: "ID",
+      },
+    },
+    localization_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "localizations",
+        key: "localization_id",
       },
     },
     created_at: {

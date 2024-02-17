@@ -43,7 +43,7 @@ const Operation = sequelize.define(
     },
     is_response_required: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     },
     localization_id: {
       type: DataTypes.INTEGER,

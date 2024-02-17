@@ -17,9 +17,17 @@ const Action = sequelize.define(
       },
       allowNull: false,
     },
+    localization_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "localizations",
+        key: "localization_id",
+      },
+    },
     isoptional: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     },
     sequence: {
       type: DataTypes.INTEGER,

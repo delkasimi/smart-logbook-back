@@ -14,6 +14,8 @@ const {
   ResponseType,
   Object,
   Media,
+  Act,
+  Issue,
 } = require("../models");
 
 const procedureController = {
@@ -29,6 +31,13 @@ const procedureController = {
   createProcedure: async (req, res) => {
     try {
       const procedure = await Procedure.create(req.body);
+      const phase = await Phase.create({
+        procedure_id: procedure.procedure_id,
+        phase_id: 9999,
+        phase_name: "hidden",
+        sequence: 1,
+        status: "Active",
+      });
       res.status(201).json(procedure);
     } catch (error) {
       res.status(400).json({ error: error.message });
@@ -144,33 +153,33 @@ const procedureController = {
                 model: Operation, // Include the Operation model
                 as: "Operations", // Use the correct alias defined in your associations
                 include: [
-                  // Include associated objects here
                   {
-                    model: Localization,
-                    as: "Localization",
+                    model: Action,
+                    as: "Actions",
                     include: [
-                      {
-                        model: Media,
-                        as: "Media",
-                      },
-                    ],
-                  },
-                  { model: OperationType, as: "OperationType" },
-                  { model: ResponseType, as: "ResponseType" },
-                  {
-                    model: Action, // Include the Action model
-                    as: "Actions", // Use the correct alias defined in your associations
-                    include: [
-                      // Include associated objects for Action
+                      { model: Operation, as: "Operation" },
                       {
                         model: ActionReference,
                         as: "ActionReference",
                         include: [
                           { model: ActionType, as: "ActionType" },
+                          { model: Act, as: "Act" },
                           { model: ResponseType, as: "ResponseType" },
+                          {
+                            model: Issue,
+                            as: "Issues",
+                            through: {
+                              attributes: [],
+                            },
+                          },
                         ],
                       },
                       { model: ResponseType, as: "ResponseType" },
+                      {
+                        model: Localization,
+                        as: "Localization",
+                        include: [{ model: Media, as: "Media" }],
+                      },
                     ],
                   },
                 ],
@@ -209,34 +218,6 @@ const procedureController = {
 
             // Add related objects to the action
             action.setDataValue("Objects", relatedObjects);
-
-            actRef = action.ActionReference;
-            const referenceObjectIds = actRef.object_id;
-            const relatedReferenceObjects = [];
-
-            if (referenceObjectIds && referenceObjectIds.length > 0) {
-              for (const referenceObjectId of referenceObjectIds) {
-                const relatedReferenceObject = await Object.findByPk(
-                  referenceObjectId
-                );
-                if (relatedReferenceObject) {
-                  const objectMediaItems = await Media.findAll({
-                    where: {
-                      associated_id: referenceObjectId,
-                      associated_type: "object",
-                    },
-                  });
-                  relatedReferenceObject.setDataValue(
-                    "Media",
-                    objectMediaItems
-                  );
-                  relatedReferenceObjects.push(relatedReferenceObject);
-                }
-              }
-            }
-
-            actRef.setDataValue("Objects", relatedReferenceObjects);
-            action.setDataValue("actionReference", actRef);
 
             // Fetch media items for actions
             const actionMediaItems = await Media.findAll({
