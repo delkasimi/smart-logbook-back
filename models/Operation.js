@@ -47,7 +47,7 @@ const Operation = sequelize.define(
     },
     localization_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "localizations",
         key: "localization_id",
