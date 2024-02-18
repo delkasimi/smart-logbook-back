@@ -61,6 +61,10 @@ const Action = sequelize.define(
       },
       allowNull: false,
     },
+    flag: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     created_at: {
       type: DataTypes.DATE,
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
