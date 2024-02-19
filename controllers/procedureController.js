@@ -33,7 +33,6 @@ const procedureController = {
       const procedure = await Procedure.create(req.body);
       const phase = await Phase.create({
         procedure_id: procedure.procedure_id,
-        phase_id: 9999,
         phase_name: "hidden",
         sequence: 1,
         status: "Active",
