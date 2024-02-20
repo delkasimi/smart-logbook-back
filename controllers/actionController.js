@@ -228,6 +228,12 @@ module.exports = {
     try {
       const actions = await Action.findAll({
         where: { operation_id: req.params.operationId },
+        include: [
+          {
+            model: ActionReference,
+            as: "ActionReference",
+          },
+        ],
       });
       res.json(actions);
     } catch (error) {

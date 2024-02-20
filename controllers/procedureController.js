@@ -173,12 +173,6 @@ const procedureController = {
                           },
                         ],
                       },
-                      { model: ResponseType, as: "ResponseType" },
-                      {
-                        model: Localization,
-                        as: "Localization",
-                        include: [{ model: Media, as: "Media" }],
-                      },
                     ],
                   },
                 ],
@@ -196,7 +190,7 @@ const procedureController = {
       for (const phase of procedure.Phases) {
         for (const operation of phase.Operations) {
           for (const action of operation.Actions) {
-            const objectIds = action.object_id;
+            const objectIds = action.ActionReference.object_id;
             const relatedObjects = [];
 
             if (objectIds && objectIds.length > 0) {
@@ -218,11 +212,28 @@ const procedureController = {
             // Add related objects to the action
             action.setDataValue("Objects", relatedObjects);
 
+            //Get Localization
+            const localizationObject = await Localization.findByPk(
+              action.ActionReference.localization_id
+            );
+            const mediaObject = await Media.findOne({
+              where: {
+                associated_id: action.ActionReference.localization_id,
+                associated_type: "localization",
+              },
+            });
+
+            if (localizationObject && mediaObject) {
+              localizationObject.setDataValue("Media", mediaObject || null);
+            }
+
+            action.setDataValue("Localization", localizationObject);
+
             // Fetch media items for actions
             const actionMediaItems = await Media.findAll({
               where: {
-                associated_id: action.action_id,
-                associated_type: "action",
+                associated_id: action.ActionReference.action_reference_id,
+                associated_type: "action_reference",
               },
             });
 
